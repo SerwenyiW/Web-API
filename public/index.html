@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web API</title>
+    <style>
+        h2{
+            font-size: 30px;
+        }
+        h1{
+            font-size: 40px;
+        }
+    </style>
+</head>
+<body>
+    <select id="phoneSelect">
+        <option value="Xiaomi14">Xiaomi 14</option>
+        <option value="XiaomiRN13">Xiaomi Redmi Note 13</option>
+        <option value="XiaomiPM6Pro">Xiaomi POCO M6 Pro</option>
+    </select>
+    <button onclick="getphone();">Adatok lekérése</button>
+    <h1 id="phonedata">aaa</h1>
+    <script type="text/javascript">
+        function getphone() {
+            const phoneSelect = document.getElementById('phoneSelect');
+            const selectedPhone = phoneSelect.value;
+            console.log(selectedPhone);
+        
+            fetch(`/xiaomi?phone=${selectedPhone}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                });
+        }
+    </script>
+    
+</body>
+</html>
